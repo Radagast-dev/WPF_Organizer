@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Organizer", "WPF_Organizer.csproj", "{6871E33F-310E-48CF-8AD2-33688E9C70BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6871E33F-310E-48CF-8AD2-33688E9C70BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6871E33F-310E-48CF-8AD2-33688E9C70BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6871E33F-310E-48CF-8AD2-33688E9C70BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6871E33F-310E-48CF-8AD2-33688E9C70BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E46D501D-E490-4427-A567-284B719C9D93}
+	EndGlobalSection
+EndGlobal
