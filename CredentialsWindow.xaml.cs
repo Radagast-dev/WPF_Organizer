@@ -24,5 +24,12 @@ namespace WPF_Organizer
         {
             InitializeComponent();
         }
+
+        private void loginButton_Click(object sender, RoutedEventArgs e) //rumpf checken
+        {
+            Center centerWindow = new Center();
+            this.Hide();
+            centerWindow.InitializeComponent();
+        }
     }
 }

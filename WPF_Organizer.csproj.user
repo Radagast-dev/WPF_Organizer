@@ -7,6 +7,14 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Center.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Center.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="CredentialsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
