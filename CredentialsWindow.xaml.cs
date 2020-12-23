@@ -41,5 +41,10 @@ namespace WPF_Organizer
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private void registerButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("REGISTER dummy");
+        }
     }
 }
