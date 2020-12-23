@@ -21,5 +21,14 @@ namespace WPF_Organizer
         {
             InitializeComponent();
         }
+        private void xButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void minimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }

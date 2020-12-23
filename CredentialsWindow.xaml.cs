@@ -27,9 +27,13 @@ namespace WPF_Organizer
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Login sucessful!");
+
             Center centerWindow = new Center();
             this.Hide();
             centerWindow.ShowDialog();
+
+            //https://www.youtube.com/watch?v=NX8-LhgFnUU
         }
 
         private void xButton_Click(object sender, RoutedEventArgs e)

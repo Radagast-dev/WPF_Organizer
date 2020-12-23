@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Organizer"
         mc:Ignorable="d"
-        Title="Center" Height="450" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="Center" Height="550" WindowStyle="None" WindowStartupLocation="CenterScreen" Width="800" AllowsTransparency="True" Background="Transparent">
     <Grid>
-        
+        <Border Grid.RowSpan="5"
+                Grid.ColumnSpan="3"
+                CornerRadius="25">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                    <GradientStop Color="#0052e5" Offset="0.0"/>
+                    <GradientStop Color="#e32f2f" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Button x:Name="xButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Click="xButton_Click" Background="#a7adba" BorderThickness="2.0" FontFamily="Saiyan Sans Regular" FontSize="18" Margin="758,13,0,0"/>
+
+        </Border>
+        <Button x:Name="minimizeButton" Content="--" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Click="minimizeButton_Click" Background="#a7adba" Margin="725,13,0,0" BorderThickness="2.0" FontFamily="Saiyan Sans Regular" FontSize="18"/>
     </Grid>
+
 </Window>
