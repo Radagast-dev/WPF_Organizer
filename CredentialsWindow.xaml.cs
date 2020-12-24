@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace WPF_Organizer
 {
@@ -27,13 +29,25 @@ namespace WPF_Organizer
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Login sucessful!");
 
-            Center centerWindow = new Center();
-            this.Hide();
-            centerWindow.ShowDialog();
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * from [PasswordTable] WHERE Name = ('" + nametextBox.Text + "') AND Password = ('" + pwtextBox.Text + "') ", conn); 
+            DataTable loginData = new DataTable();
 
-            //https://www.youtube.com/watch?v=NX8-LhgFnUU
+            dataAdapter.Fill(loginData);
+
+            if (loginData.Rows.Count == 1) //Geht nicht in schleife rein (?)
+            {
+                MessageBox.Show("Login sucessful!");
+
+                this.Hide();
+                Center centerWindow = new Center();
+                centerWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Wrong Password!");
+            }
         }
 
         private void xButton_Click(object sender, RoutedEventArgs e)
@@ -49,6 +63,25 @@ namespace WPF_Organizer
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("REGISTER dummy");
+
+            SqlConnection regConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf;Integrated Security=True;Connect Timeout=30");
+            
+            SqlDataAdapter regReadAdapter = new SqlDataAdapter("SELECT * from [RegisterTable] WHERE RegisterNumber = ('" + regtextBox.Text +"')", regConn);
+            DataTable regReadTable = new DataTable();
+
+            SqlDataAdapter regWriteAdapter = new SqlDataAdapter("INSERT INTO [PasswordTable] WHERE Name = ('" + regtextBox.Text + "')", regConn);
+            DataTable regWriteTable = new DataTable();
+
+            regReadAdapter.Fill(regReadTable);
+            
+            if(regReadTable.Rows.Count == 1)
+            {
+                MessageBox.Show("Correct code number given!");
+            }
+            else
+            {
+                MessageBox.Show("Incorrect number!");
+            }
         }
     }
 }
