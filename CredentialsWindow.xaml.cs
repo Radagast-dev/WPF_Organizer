@@ -26,11 +26,28 @@ namespace WPF_Organizer
         {
             InitializeComponent();
         }
+        
+        SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf;Integrated Security=True;Connect Timeout=30");
+        
+        public void connectionState()
+        {
+            if (ConnectionState.Open.Equals(true))
+            {
+                conn.Close();
+            }
+            else
+            {
+                if (ConnectionState.Closed.Equals(true))
+                {
+                    conn.Open();
+                }
+            }
+        }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf;Integrated Security=True;Connect Timeout=30");
+           
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * from [PasswordTable] WHERE Name = ('" + nametextBox.Text + "') AND Password = ('" + pwtextBox.Text + "') ", conn); 
             DataTable loginData = new DataTable();
 
@@ -48,6 +65,11 @@ namespace WPF_Organizer
             {
                 MessageBox.Show("Wrong Password!");
             }
+
+            nametextBox.Text = "";
+            pwtextBox.Text = "";
+
+            connectionState();
         }
 
         private void xButton_Click(object sender, RoutedEventArgs e)
@@ -62,26 +84,52 @@ namespace WPF_Organizer
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("REGISTER dummy");
 
-            SqlConnection regConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf;Integrated Security=True;Connect Timeout=30");
+            //SqlConnection regConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf;Integrated Security=True;Connect Timeout=30");
             
-            SqlDataAdapter regReadAdapter = new SqlDataAdapter("SELECT * from [RegisterTable] WHERE RegisterNumber = ('" + regtextBox.Text +"')", regConn);
+            SqlDataAdapter regReadAdapter = new SqlDataAdapter("SELECT * from [RegisterTable] WHERE RegisterNumber = ('" + regtextBox.Text +"')", conn); //analyse!
             DataTable regReadTable = new DataTable();
 
-            SqlDataAdapter regWriteAdapter = new SqlDataAdapter("INSERT INTO [PasswordTable] WHERE Name = ('" + regtextBox.Text + "')", regConn);
+            try
+            {
+                regReadAdapter.Fill(regReadTable);
+                
+                if (regReadTable.Rows.Count == 1)
+                {
+                    MessageBox.Show("Correct code number given!");
+                }
+                else
+                {
+                    if(regtextBox.Text.Equals(regtextBox.Text = ""))
+                    {
+                        MessageBox.Show("No register number given");
+                    }
+                    MessageBox.Show("Incorrect number!");
+                }
+            }
+            catch(SqlException sqlException)
+            {
+                sqlException.Message.Contains("Conversion failed when converting the varchar value 'reg' to data type int.");
+                MessageBox.Show("Conversion failed when converting the varchar value 'reg' to data type int. Number needed, no text");
+                regtextBox.Text = "";
+                return;
+            }
+
+            connectionState();
+
+            //-- reg write area --//
+            SqlDataAdapter regWriteAdapter = new SqlDataAdapter("INSERT INTO [PasswordTable] (Name,Password) VALUES('" + nametextBox.Text + "' , '" + pwtextBox.Text + "')", conn); //Inkorrekte sql syntax
             DataTable regWriteTable = new DataTable();
 
-            regReadAdapter.Fill(regReadTable);
             
-            if(regReadTable.Rows.Count == 1)
-            {
-                MessageBox.Show("Correct code number given!");
-            }
-            else
-            {
-                MessageBox.Show("Incorrect number!");
-            }
+            regWriteAdapter.Fill(regWriteTable);
+
+
+            nametextBox.Text = "";
+            pwtextBox.Text = "";
+            regtextBox.Text = "";
+
+            connectionState();
         }
     }
 }

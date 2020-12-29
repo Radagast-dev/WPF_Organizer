@@ -1,1 +1,1 @@
-﻿INSERT INTO [dbo].[PasswordTable] ([Id], [Name], [Password]) VALUES (1, Seb, Veg)
+﻿INSERT INTO [dbo].[PasswordTable] ([Id], [Name], [Password]) VALUES (1, N'Seb', N'Veg')
