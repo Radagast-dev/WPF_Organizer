@@ -75,6 +75,7 @@ namespace WPF_Organizer
         private void xButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            Environment.Exit(0);
         }
 
         private void minimizeButton_Click(object sender, RoutedEventArgs e)
@@ -121,9 +122,7 @@ namespace WPF_Organizer
             SqlDataAdapter regWriteAdapter = new SqlDataAdapter("INSERT INTO [PasswordTable] (Name,Password) VALUES('" + nametextBox.Text + "' , '" + pwtextBox.Text + "')", conn); //Inkorrekte sql syntax
             DataTable regWriteTable = new DataTable();
 
-            
-            regWriteAdapter.Fill(regWriteTable);
-
+            regWriteAdapter.Fill(regWriteTable); //useless?!
 
             nametextBox.Text = "";
             pwtextBox.Text = "";

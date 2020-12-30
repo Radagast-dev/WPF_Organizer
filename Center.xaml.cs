@@ -24,6 +24,7 @@ namespace WPF_Organizer
         private void xButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            Environment.Exit(0);
         }
 
         private void minimizeButton_Click(object sender, RoutedEventArgs e)
