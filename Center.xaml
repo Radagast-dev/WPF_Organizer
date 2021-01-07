@@ -16,20 +16,20 @@
                     <GradientStop Color="#e32f2f" Offset="1.0"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Button x:Name="xButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Click="xButton_Click" Background="#a7adba" BorderThickness="2.0" FontFamily="Saiyan Sans Regular" FontSize="18" Margin="758,13,0,0"/>
+            <Button x:Name="xButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Click="xButton_Click" Background="#a7adba" BorderThickness="2.0" FontFamily="Comic Sans" FontSize="18" Margin="758,13,0,0"/>
 
         </Border>
-        <Button x:Name="minimizeButton" Content="--" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Click="minimizeButton_Click" Background="#a7adba" Margin="725,13,0,0" BorderThickness="2.0" FontFamily="Saiyan Sans Regular" FontSize="18"/>
-        <Label x:Name="label" Content="Organizer Center" HorizontalAlignment="Center" Margin="0,13,0,0" VerticalAlignment="Top" Height="41" Width="176" FontFamily="Saiyan Sans Regular" FontSize="24" Background="#ffd700" BorderThickness="3.5" BorderBrush="#4f5b66"/>
+        <Button x:Name="minimizeButton" Content="--" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Click="minimizeButton_Click" Background="#a7adba" Margin="725,13,0,0" BorderThickness="2.0" FontFamily="Comic Sans" FontSize="18"/>
+        <Label x:Name="label" Content="Organizer Center" HorizontalAlignment="Center" Margin="0,13,0,0" VerticalAlignment="Top" Height="41" Width="176" FontFamily="Comic Sans" FontSize="20" Background="#ffd700" BorderThickness="3.5" BorderBrush="#4f5b66"/>
         <Grid HorizontalAlignment="Center" Height="466" Margin="0,65,0,0" VerticalAlignment="Top" Width="736" Background="AntiqueWhite" Opacity="0.8">
             <TabControl x:Name="tabControl">
-                <TabItem Header="Tab I" Margin="-2,-2,-20,0" FontFamily="Saiyan Sans Regular">
+                <TabItem Header="Tab I" Margin="-2,-2,-20,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
-                <TabItem Header="Tab II" Margin="20,-2,-40,0" FontFamily="Saiyan Sans Regular">
+                <TabItem Header="Tab II" Margin="20,-2,-40,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
-                <TabItem Header="Tab III" Margin="40,-2,-59,0" FontFamily="Saiyan Sans Regular">
+                <TabItem Header="Tab III" Margin="40,-2,-59,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
             </TabControl>
