@@ -21,7 +21,7 @@
         </Border>
         <Button x:Name="minimizeButton" Content="--" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Click="minimizeButton_Click" Background="#a7adba" Margin="725,13,0,0" BorderThickness="2.0" FontFamily="Comic Sans" FontSize="18"/>
         <Label x:Name="label" Content="Organizer Center" HorizontalAlignment="Center" Margin="0,13,0,0" VerticalAlignment="Top" Height="41" Width="176" FontFamily="Comic Sans" FontSize="20" Background="#ffd700" BorderThickness="3.5" BorderBrush="#4f5b66"/>
-        <Grid HorizontalAlignment="Center" Height="466" Margin="0,65,0,0" VerticalAlignment="Top" Width="736" Background="AntiqueWhite" Opacity="0.8">
+        <Grid HorizontalAlignment="Center" Height="466" Margin="0,65,0,0" VerticalAlignment="Top" Width="736" Background="AntiqueWhite" Opacity="0.95">
             <TabControl x:Name="tabControl">
                 <TabItem Header="Tab I" Margin="-2,-2,-20,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5"/>
@@ -33,6 +33,9 @@
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
             </TabControl>
+            <Label x:Name="label1" Content="Planer" HorizontalAlignment="Center" Margin="0,32,0,0" VerticalAlignment="Top" Width="64" FontFamily="Comic Sans" FontSize="18" BorderBrush="#4f5b66" BorderThickness="2.0" Height="34"/>
+            <DataGrid x:Name="dataGrid" Margin="42,71,42,39"/>
+
         </Grid>
 
     </Grid>

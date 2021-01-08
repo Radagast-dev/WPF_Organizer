@@ -14,6 +14,8 @@ namespace WPF_Organizer
 {
     /// <summary>
     /// Interaction logic for Center.xaml
+    /// calendar w functionality
+    /// datatable via db + xlsx export -> planer
     /// </summary>
     public partial class Center : Window
     {
