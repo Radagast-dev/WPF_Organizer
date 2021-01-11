@@ -1,8 +1,8 @@
-﻿<Application x:Class="WPF_Organizer.App"
+﻿   <Application x:Class="WPF_Organizer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WPF_Organizer"
-             StartupUri="CredentialsWindow.xaml">
+             StartupUri="Center.xaml">
     <Application.Resources>
          
     </Application.Resources>

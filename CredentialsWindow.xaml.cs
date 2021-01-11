@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace WPF_Organizer
 {
@@ -25,9 +26,23 @@ namespace WPF_Organizer
         {
             InitializeComponent();
         }
+
+        public string dbPath = @"C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf";
+
+        SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" &dbPath& ";Integrated Security=True;Connect Timeout=30");
         
-        SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf;Integrated Security=True;Connect Timeout=30");
-        
+        public void directoryCheck()
+        {
+            if (Directory.Exists(dbPath))
+            {
+                //do xy
+            }
+            else
+            {
+                //do z
+            }
+        }
+
         public void connectionState()
         {
             if (ConnectionState.Open.Equals(true))
@@ -38,7 +53,7 @@ namespace WPF_Organizer
             {
                 if (ConnectionState.Closed.Equals(true))
                 {
-                    conn.Open();
+                    conn.Open();   //sinn?!
                 }
             }
         }
