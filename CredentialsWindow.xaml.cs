@@ -27,9 +27,16 @@ namespace WPF_Organizer
             InitializeComponent();
         }
 
-        public string dbPath = @"C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf";
+        //Console.WriteLine("UserName: {0}", Environment.UserName)
 
-        SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" &dbPath& ";Integrated Security=True;Connect Timeout=30");
+
+        public static string userPath = Environment.UserName;                        //finde env.user
+        public static string dbPath = @$"C:\Users\{userPath}\source\repos\.git\db\WPF_Organizer_DB.mdf"; //bastele env.user in string
+        public static string dbPathDefault = $@"";
+        public static string connString = @$"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename= {dbPath} ;Integrated Security = True; Connect Timeout = 30"; //db path in connstring
+
+
+        SqlConnection conn = new SqlConnection(connString);
         
         public void directoryCheck()
         {
@@ -61,7 +68,6 @@ namespace WPF_Organizer
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
 
-           
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * from [PasswordTable] WHERE Name = ('" + nametextBox.Text + "') AND Password = ('" + pwtextBox.Text + "') ", conn); 
             DataTable loginData = new DataTable();
 
