@@ -32,21 +32,21 @@ namespace WPF_Organizer
 
         public static string userPath = Environment.UserName;                        //finde env.user
         public static string dbPath = @$"C:\Users\{userPath}\source\repos\.git\db\WPF_Organizer_DB.mdf"; //bastele env.user in string
-        public static string dbPathDefault = $@"";
+        public static string dbPathDefault = $@"C:\Users\{userPath}\source\repos\.git\db";
         public static string connString = @$"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename= {dbPath} ;Integrated Security = True; Connect Timeout = 30"; //db path in connstring
 
 
         SqlConnection conn = new SqlConnection(connString);
         
-        public void directoryCheck()
+        public void directoryCheck() //einbauen
         {
             if (Directory.Exists(dbPath))
             {
-                //do xy
+                MessageBox.Show("DB user path established");
             }
             else
             {
-                //do z
+                connString = dbPathDefault; // funzt nicht
             }
         }
 
@@ -60,7 +60,8 @@ namespace WPF_Organizer
             {
                 if (ConnectionState.Closed.Equals(true))
                 {
-                    conn.Open();   //sinn?!
+                    MessageBox.Show("Database connection closed!");
+                    //conn.Open();   //sinn?!
                 }
             }
         }
