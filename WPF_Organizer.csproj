@@ -24,6 +24,9 @@
     <None Update="db\dbo.PasswordTable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="db\dbo.PlanerTable.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="db\dbo.RegisterTable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

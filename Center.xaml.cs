@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
 
 namespace WPF_Organizer
 {
@@ -19,10 +20,25 @@ namespace WPF_Organizer
     /// </summary>
     public partial class Center : Window
     {
+
+        SqlConnection planerConn = new SqlConnection(@"C:\Users\Radagast\source\repos\.git\db\dbo.PlanerTable.sql");
+
         public Center()
         {
             InitializeComponent();
         }
+
+        public void readGrid()
+        {
+            SqlCommand readCmd = planerConn.CreateCommand();
+            readCmd.CommandType = System.Data.CommandType.Text;
+            readCmd.CommandText = "SELECT * from [PlanerTable]";
+            readCmd.ExecuteNonQuery();
+            planerConn.Close();
+
+            SqlCommand cmdQuery = new SqlCommand();   //hier weiterbasteln
+        }
+
         private void xButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -33,5 +49,6 @@ namespace WPF_Organizer
         {
             this.WindowState = WindowState.Minimized;
         }
+
     }
 }

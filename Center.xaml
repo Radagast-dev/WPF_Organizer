@@ -25,7 +25,10 @@
             <TabControl x:Name="tabControl">
                 <TabItem Header="Tab I" Margin="-2,-2,-20,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGrid" Margin="42,71,42,39"/>    
+                        <Label x:Name="label1" Content="Planer" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="64" FontFamily="Comic Sans" FontSize="18" BorderBrush="#4f5b66" BorderThickness="2.0" Height="34"/>
+                        <DataGrid x:Name="dataGrid" Margin="42,55,42,55" ItemsSource="{Binding}"/>
+                        <Button x:Name="button" Content="Update" HorizontalAlignment="Left" Margin="42,411,0,0" VerticalAlignment="Top"/>
+                        <Button x:Name="button1" Content="Insert to DB" HorizontalAlignment="Left" Margin="648,411,0,0" VerticalAlignment="Top"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Tab II" Margin="20,-2,-40,0" FontFamily="Comic Sans">
@@ -35,9 +38,6 @@
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
             </TabControl>
-            <Label x:Name="label1" Content="Planer" HorizontalAlignment="Center" Margin="0,32,0,0" VerticalAlignment="Top" Width="64" FontFamily="Comic Sans" FontSize="18" BorderBrush="#4f5b66" BorderThickness="2.0" Height="34"/>
-
-
         </Grid>
 
     </Grid>
