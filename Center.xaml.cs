@@ -19,6 +19,7 @@ namespace WPF_Organizer
     /// calendar w functionality
     /// datatable via db + xlsx export -> planer
     /// datagrid vid: https://www.youtube.com/watch?v=dOZYOnFb56Q
+    /// https://stackoverflow.com/questions/50279736/how-to-get-all-header-text-from-datagrid-in-wpf-c-sharp-using-code-behind
     /// texttab http://openbook.rheinwerk-verlag.de/einstieg_vb_2012/1959_06_003.html
     /// </summary>
     public partial class Center : Window
@@ -46,6 +47,7 @@ namespace WPF_Organizer
             DataSet gridDataSet = new DataSet();
             gridAdapter.Fill(gridDataSet);
 
+            //dataGrid.RowHeaderActualWidth.Equals(150);
             dataGrid.ItemsSource = gridDataSet.Tables[0].DefaultView;
         }
 
