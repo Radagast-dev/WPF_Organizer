@@ -26,7 +26,7 @@
                 <TabItem Header="Tab I" Margin="-2,-2,-20,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5">
                         <Label x:Name="label1" Content="Planer" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="64" FontFamily="Comic Sans" FontSize="18" BorderBrush="#4f5b66" BorderThickness="2.0" Height="34"/>
-                        <DataGrid x:Name="dataGrid" Margin="42,55,42,55" ItemsSource="{Binding}">
+                        <DataGrid x:Name="dataGrid" Margin="42,55,42,55" ItemsSource="{Binding}" ColumnWidth="150">
                         </DataGrid>
                         <Button x:Name="button" Content="Update" HorizontalAlignment="Left" Margin="42,411,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba"/>
                         <Button x:Name="button1" Content="Insert to DB" HorizontalAlignment="Left" Margin="648,411,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba"/>
