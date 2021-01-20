@@ -47,8 +47,16 @@ namespace WPF_Organizer
             DataSet gridDataSet = new DataSet();
             gridAdapter.Fill(gridDataSet);
 
-            //dataGrid.RowHeaderActualWidth.Equals(150);
             dataGrid.ItemsSource = gridDataSet.Tables[0].DefaultView;
+        }
+
+        //write to datagrid
+        //write cmd + read dataGrid.Cells + write to table via sql command
+        //view auslesen + datagrid cells prüfen (for loop) + werte in sql write-command integrieren und tabelle aktualisieren
+
+        public void writeToTable() //einbinden in button event methode
+        {
+
         }
 
         private void xButton_Click(object sender, RoutedEventArgs e)
