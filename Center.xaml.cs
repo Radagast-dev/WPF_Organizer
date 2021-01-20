@@ -21,6 +21,7 @@ namespace WPF_Organizer
     /// datagrid vid: https://www.youtube.com/watch?v=dOZYOnFb56Q
     /// https://stackoverflow.com/questions/50279736/how-to-get-all-header-text-from-datagrid-in-wpf-c-sharp-using-code-behind
     /// texttab http://openbook.rheinwerk-verlag.de/einstieg_vb_2012/1959_06_003.html
+    /// https://www.youtube.com/watch?v=9mUuJIKq40M
     /// </summary>
     public partial class Center : Window
     {
@@ -56,6 +57,14 @@ namespace WPF_Organizer
 
         public void writeToTable() //einbinden in button event methode
         {
+            SqlCommand cmd = planerConn.CreateCommand();
+
+
+            planerConn.Open();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = "INSERT INTO [Table] VALUES ('" + dataGrid.Items + "')";    //wie lese ich hier korrekt die cells ein????
+            cmd.ExecuteNonQuery();
+            planerConn.Close();
 
         }
 
