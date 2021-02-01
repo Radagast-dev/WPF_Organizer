@@ -55,14 +55,13 @@ namespace WPF_Organizer
         //write cmd + read dataGrid.Cells + write to table via sql command
         //view auslesen + datagrid cells prüfen (for loop) + werte in sql write-command integrieren und tabelle aktualisieren
 
-        public void writeToTable() //einbinden in button event methode
+        public void writeToPlanerTable() //einbinden in button event methode
         {
             SqlCommand cmd = planerConn.CreateCommand();
 
-
             planerConn.Open();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "INSERT INTO [Table] VALUES ('" + dataGrid.Items + "')";    //wie lese ich hier korrekt die cells ein????
+            cmd.CommandText = "INSERT INTO [PlanerTable] VALUES ('" + dataGrid.Items + "')";    //wie lese ich hier korrekt die cells ein????
             cmd.ExecuteNonQuery();
             planerConn.Close();
 

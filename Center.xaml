@@ -34,7 +34,7 @@
                 </TabItem>
                 <TabItem Header="Tab II" Margin="20,-2,-40,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5">
-                        <TextBox x:Name="readWriteTxtBox" HorizontalAlignment="Center" Margin="0,10,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="710" Height="345"/>
+                        <TextBox x:Name="readWriteTxtBox" HorizontalAlignment="Center" Margin="0,10,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="710" Height="345" TextChanged="readWriteTxtBox_TextChanged"/>
                         <Button x:Name="loadTextButton" Content="Load Text" HorizontalAlignment="Left" Margin="26,384,0,0" VerticalAlignment="Top"/>
                         <Button x:Name="saveTextButton" Content="Save Text" HorizontalAlignment="Left" Margin="643,384,0,0" VerticalAlignment="Top"/>
                         <Label x:Name="directoryLabel" Content="Directory Label" HorizontalAlignment="Center" Margin="0,384,0,0" VerticalAlignment="Top" Width="294" Background="Azure"/>
