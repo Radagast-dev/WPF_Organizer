@@ -78,5 +78,11 @@ namespace WPF_Organizer
             this.WindowState = WindowState.Minimized;
         }
 
+        private void saveTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Textreader https://www.dotnetperls.com/textreader
+            //Textbox auslesen
+            //String aus txtBox zwischenspeichern (dynamische speicherung)
+        }
     }
 }
