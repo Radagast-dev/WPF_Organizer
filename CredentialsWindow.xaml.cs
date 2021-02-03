@@ -30,9 +30,9 @@ namespace WPF_Organizer
         //Console.WriteLine("UserName: {0}", Environment.UserName)
 
 
-        public static string userPath = Environment.UserName;                        //finde env.user
-        public static string dbPath = @$"C:\Users\{userPath}\source\repos\.git\db\WPF_Organizer_DB.mdf"; //bastele env.user in string
-        public static string dbPathDefault = $@"C:\Users\{userPath}\source\repos\.git\db";
+        public static string userEnv = Environment.UserName;                        //finde env.user
+        public static string dbPath = @$"C:\Users\{userEnv}\source\repos\.git\db\WPF_Organizer_DB.mdf"; //bastele env.user in string
+        public static string dbPathDefault = $@"C:\Users\{userEnv}\source\repos\.git\db";
         public static string connString = @$"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename= {dbPath} ;Integrated Security = True; Connect Timeout = 30"; //db path in connstring
 
 

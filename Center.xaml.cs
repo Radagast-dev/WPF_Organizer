@@ -11,6 +11,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
+using System.Security.AccessControl;
 
 namespace WPF_Organizer
 {
@@ -78,11 +80,22 @@ namespace WPF_Organizer
             this.WindowState = WindowState.Minimized;
         }
 
+        public static string fileName = "Testtest.txt";
+        public static string userEnv = Environment.UserName;
+        public static string userDefaultPath = @$"C:\Users\{userEnv}\Documents\{fileName}";
         private void saveTextButton_Click(object sender, RoutedEventArgs e)
         {
-            //Textreader https://www.dotnetperls.com/textreader
             //Textbox auslesen
-            //String aus txtBox zwischenspeichern (dynamische speicherung)
+            string textBoxText = readWriteTxtBox.Text;
+            //Textbox Inhalt in File schreiben
+            File.WriteAllText(userDefaultPath, textBoxText);
+            MessageBox.Show("Text sucessfully saved!");
+        }
+
+        private void loadTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            readWriteTxtBox.Text = File.ReadAllText(userDefaultPath);
+            MessageBox.Show("Txt File sucessfully loaded!");
         }
     }
 }
