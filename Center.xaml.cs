@@ -80,7 +80,7 @@ namespace WPF_Organizer
             this.WindowState = WindowState.Minimized;
         }
 
-        public static string fileName = "Testtest.txt";
+        public static string fileName = "Testtest.txt"; //hier Namebox auslesen?
         public static string userEnv = Environment.UserName;
         public static string userDefaultPath = @$"C:\Users\{userEnv}\Documents\{fileName}";
         private void saveTextButton_Click(object sender, RoutedEventArgs e)
@@ -96,6 +96,25 @@ namespace WPF_Organizer
         {
             readWriteTxtBox.Text = File.ReadAllText(userDefaultPath);
             MessageBox.Show("Txt File sucessfully loaded!");
+        }
+
+        private void cleanBox_Click(object sender, RoutedEventArgs e)
+        {
+            readWriteTxtBox.Text = "";
+            MessageBox.Show("Textbox cleaned!");
+        }
+
+        private void fileDirectoryDialog() //Pfade funzen nicht
+        {
+            boxItem1.Content = userDefaultPath;
+            //boxItem2.Content = $@"C:\Users\{userEnv}\Desktop";
+            //boxItem3.Content = $@"C:\Users\{userEnv}";
+        }
+
+        private void directoryBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            fileDirectoryDialog();
+            //Pfade als Lade- und Speicherpfade auswählen
         }
     }
 }
