@@ -29,28 +29,24 @@
                         <DataGrid x:Name="dataGrid" Margin="42,55,42,55" ItemsSource="{Binding}" ColumnWidth="125">
                         </DataGrid>
                         <Button x:Name="button" Content="Update" HorizontalAlignment="Left" Margin="42,411,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba"/>
-                        <Button x:Name="button1" Content="Insert to DB" HorizontalAlignment="Left" Margin="648,411,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba"/>
+                        <Button x:Name="button1" Content="Insert to DB" HorizontalAlignment="Left" Margin="648,411,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba" Click="dbInsert_Click"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Tab II" Margin="20,-2,-40,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5">
                         <TextBox x:Name="readWriteTxtBox" HorizontalAlignment="Center" Margin="0,10,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="710" Height="345"/>
-                        <Button x:Name="loadTextButton" Content="Load Text" HorizontalAlignment="Left" Margin="29,366,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba" Click="loadTextButton_Click"/>
                         <Button x:Name="saveTextButton" Content="Save Text" HorizontalAlignment="Left" Margin="637,366,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba" Click="saveTextButton_Click" RenderTransformOrigin="0.53,0.176"/>
-                        <Label x:Name="directoryLabel" Content="Directory" HorizontalAlignment="Left" Margin="135,396,0,16" BorderBrush="#4f5b66" BorderThickness="2.0"/>
-                        <ComboBox 
-                            x:Name="directoryBox" HorizontalAlignment="Center" Margin="0,400,0,0" VerticalAlignment="Top" Width="294" Background="Azure" SelectionChanged="directoryBox_SelectionChanged">
-                            <ComboBoxItem x:Name="boxItem1" IsSelected="True">Path #1</ComboBoxItem>
-                            <ComboBoxItem x:Name="boxItem2">Path #2</ComboBoxItem>
-                            <ComboBoxItem x:Name="boxItem3">Path #3</ComboBoxItem>
-                        </ComboBox>
-                        <Button x:Name="cleanBox" Content="Clean Textbox" HorizontalAlignment="Center" Margin="0,366,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba" Click="cleanBox_Click"/>
-                        <TextBox x:Name="fileNameBox" HorizontalAlignment="Left" Margin="459,368,0,0" Text="Enter Filename" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
+                        <Label x:Name="directoryLabel" Content="Directory" HorizontalAlignment="Left" Margin="208,362,0,50" BorderBrush="#4f5b66" BorderThickness="2.0"/>
+                        <Button x:Name="cleanBox" Content="Clean Textbox" HorizontalAlignment="Left" Margin="24,366,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba" Click="cleanBox_Click"/>
+                        <Button x:Name="fileDialog" Content="Open File" HorizontalAlignment="Left" Margin="275,366,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba" Click="fileDialog_Click"/>
 
                     </Grid>
                 </TabItem>
                 <TabItem Header="Tab III" Margin="40,-2,-59,0" FontFamily="Comic Sans">
-                    <Grid Background="#FFE5E5E5"/>
+                    <Grid Background="#FFE5E5E5">
+                        <Label x:Name="timeLabel" HorizontalAlignment="Center" Margin="0,125,0,0" VerticalAlignment="Top" Height="123" Width="244" FontSize="100" Background="AntiqueWhite"/>
+                        <Label x:Name="clockTitleLabel" Content="Clock" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top" Height="52" Width="80" FontSize="28"/>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </Grid>

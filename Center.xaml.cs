@@ -13,6 +13,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.IO;
 using System.Security.AccessControl;
+using Microsoft.Win32;
+using System.Windows.Threading;
 
 namespace WPF_Organizer
 {
@@ -28,12 +30,18 @@ namespace WPF_Organizer
     public partial class Center : Window
     {
 
+        //Tab I
         SqlConnection planerConn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename= C:\Users\Radagast\source\repos\.git\db\WPF_Organizer_DB.mdf; Integrated Security = True; Connect Timeout = 30");
 
         public Center()
         {
             InitializeComponent();
+            
+            //Tab I
             readGrid();
+
+            //Tab III
+            timeFoo();
         }
 
         public void readGrid()
@@ -68,6 +76,11 @@ namespace WPF_Organizer
             planerConn.Close();
 
         }
+        private void dbInsert_Click(object sender, RoutedEventArgs e)
+        {
+            writeToPlanerTable();
+            MessageBox.Show("Data saved to DB!");
+        }
 
         private void xButton_Click(object sender, RoutedEventArgs e)
         {
@@ -80,22 +93,22 @@ namespace WPF_Organizer
             this.WindowState = WindowState.Minimized;
         }
 
-        public static string fileName = "Testtest.txt"; //hier Namebox auslesen?
+        //TAB II
         public static string userEnv = Environment.UserName;
-        public static string userDefaultPath = @$"C:\Users\{userEnv}\Documents\{fileName}";
-        private void saveTextButton_Click(object sender, RoutedEventArgs e)
+        public static string userDefaultPath = @$"C:\Users\{userEnv}\Documents\";
+
+        private void savefileDirectoryDialog()
         {
-            //Textbox auslesen
-            string textBoxText = readWriteTxtBox.Text;
-            //Textbox Inhalt in File schreiben
-            File.WriteAllText(userDefaultPath, textBoxText);
-            MessageBox.Show("Text sucessfully saved!");
+            SaveFileDialog savefileDialog = new SaveFileDialog();
+            savefileDialog.ShowDialog();
+            //savefileDialog.FileName = userDefaultPath;
+            File.WriteAllText(savefileDialog.FileName, readWriteTxtBox.Text);
         }
 
-        private void loadTextButton_Click(object sender, RoutedEventArgs e)
+        private void saveTextButton_Click(object sender, RoutedEventArgs e) 
         {
-            readWriteTxtBox.Text = File.ReadAllText(userDefaultPath);
-            MessageBox.Show("Txt File sucessfully loaded!");
+            savefileDirectoryDialog();
+            MessageBox.Show("Text sucessfully saved!");
         }
 
         private void cleanBox_Click(object sender, RoutedEventArgs e)
@@ -104,17 +117,33 @@ namespace WPF_Organizer
             MessageBox.Show("Textbox cleaned!");
         }
 
-        private void fileDirectoryDialog() //Pfade funzen nicht
+        private void fileDirectoryDialog()
         {
-            boxItem1.Content = userDefaultPath;
-            //boxItem2.Content = $@"C:\Users\{userEnv}\Desktop";
-            //boxItem3.Content = $@"C:\Users\{userEnv}";
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
+            //fileDialog.FileName = userDefaultPath;
+            readWriteTxtBox.Text = File.ReadAllText(fileDialog.FileName);
         }
 
-        private void directoryBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void fileDialog_Click(object sender, RoutedEventArgs e)
         {
             fileDirectoryDialog();
-            //Pfade als Lade- und Speicherpfade auswählen
+            MessageBox.Show("File opened!");
+        }
+
+        //Tab III
+
+        public void timeFoo()
+        {
+            DispatcherTimer clockTimer = new DispatcherTimer();
+            clockTimer.Interval = TimeSpan.FromMilliseconds(1000);
+            clockTimer.Tick += clockTimer_Tick;
+            clockTimer.Start();
+        }
+
+        void clockTimer_Tick(object sender, EventArgs e)
+        {
+            timeLabel.Content = DateTime.Now.ToLongTimeString();
         }
     }
 }
