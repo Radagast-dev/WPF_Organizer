@@ -25,11 +25,19 @@
             <TabControl x:Name="tabControl">
                 <TabItem Header="Tab I" Margin="-2,-2,-20,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5">
-                        <Label x:Name="label1" Content="Planer" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="64" FontFamily="Comic Sans" FontSize="18" BorderBrush="#4f5b66" BorderThickness="2.0" Height="34"/>
-                        <DataGrid x:Name="dataGrid" Margin="42,55,42,55" ItemsSource="{Binding}" ColumnWidth="125">
+                        <Label x:Name="planerLabel" Content="Planer" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="64" FontFamily="Comic Sans" FontSize="18" BorderBrush="#4f5b66" BorderThickness="2.0" Height="34"/>
+                        <DataGrid x:Name="dataGrid" Margin="42,55,42,119" ItemsSource="{Binding}" ColumnWidth="125" AutoGenerateColumns="True">
                         </DataGrid>
-                        <Button x:Name="button" Content="Update" HorizontalAlignment="Left" Margin="42,411,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba"/>
-                        <Button x:Name="button1" Content="Insert to DB" HorizontalAlignment="Left" Margin="648,411,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba" Click="dbInsert_Click"/>
+                        <Button x:Name="updateButton" Content="Update" HorizontalAlignment="Left" Margin="42,411,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba" Click="update_Click"/>
+                        <Button x:Name="insertButton" Content="Insert to DB" HorizontalAlignment="Left" Margin="648,411,0,0" VerticalAlignment="Top" BorderThickness="2.0" Background="#a7adba" Click="dbInsert_Click"/>
+                        <Label x:Name="uhrzeitLabel" Content="Uhrzeit" HorizontalAlignment="Left" Margin="89,326,0,0" VerticalAlignment="Top" BorderThickness="2.0" BorderBrush="#4f5b66"/>
+                        <Label x:Name="tätigkeitLabel" Content="Tätigkeit" HorizontalAlignment="Left" Margin="242,326,0,0" VerticalAlignment="Top" BorderThickness="2.0" BorderBrush="#4f5b66"/>
+                        <Label x:Name="beschreibungLabel" Content="Beschreibung" HorizontalAlignment="Left" Margin="393,326,0,0" VerticalAlignment="Top" BorderThickness="2.0" BorderBrush="#4f5b66"/>
+                        <Label x:Name="erledigtLabel" Content="Erledigt" HorizontalAlignment="Left" Margin="576,326,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.149,0.148" BorderThickness="2.0" BorderBrush="#4f5b66"/>
+                        <TextBox x:Name="uhrzeitBox" HorizontalAlignment="Left" Margin="53,356,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderThickness="2.0" BorderBrush="#4f5b66"/>
+                        <TextBox x:Name="tätigkeitBox" HorizontalAlignment="Left" Margin="209,356,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderThickness="2.0" BorderBrush="#4f5b66"/>
+                        <TextBox x:Name="beschreibungBox" HorizontalAlignment="Left" Margin="376,356,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderThickness="2.0" BorderBrush="#4f5b66"/>
+                        <TextBox x:Name="erledigtBox" HorizontalAlignment="Left" Margin="543,356,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderThickness="2.0" BorderBrush="#4f5b66"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Tab II" Margin="20,-2,-40,0" FontFamily="Comic Sans">
@@ -44,8 +52,9 @@
                 </TabItem>
                 <TabItem Header="Tab III" Margin="40,-2,-59,0" FontFamily="Comic Sans">
                     <Grid Background="#FFE5E5E5">
-                        <Label x:Name="timeLabel" HorizontalAlignment="Center" Margin="0,125,0,0" VerticalAlignment="Top" Height="123" Width="244" FontSize="100" Background="AntiqueWhite"/>
-                        <Label x:Name="clockTitleLabel" Content="Clock" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top" Height="52" Width="80" FontSize="28"/>
+                        <Label x:Name="timeLabel" HorizontalAlignment="Center" Margin="0,83,0,0" VerticalAlignment="Top" Height="123" Width="244" FontSize="100" Background="AntiqueWhite"/>
+                        <Label x:Name="clockTitleLabel" Content="Clock and Date" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top" Height="52" Width="80" FontSize="28"/>
+                        <Calendar HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" Height="189" Width="401"/>
                     </Grid>
                 </TabItem>
             </TabControl>

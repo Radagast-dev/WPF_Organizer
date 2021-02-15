@@ -1,1 +1,7 @@
-﻿INSERT INTO [dbo].[PasswordTable] ([Id], [Name], [Password]) VALUES (1, N'Seb', N'Veg')
+﻿CREATE TABLE [dbo].[PasswordTable] (
+    [Id]       INT          IDENTITY (1, 1) NOT NULL,
+    [Name]     VARCHAR (50) NOT NULL,
+    [Password] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+

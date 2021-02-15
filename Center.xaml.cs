@@ -36,7 +36,7 @@ namespace WPF_Organizer
         public Center()
         {
             InitializeComponent();
-            
+
             //Tab I
             readGrid();
 
@@ -46,34 +46,57 @@ namespace WPF_Organizer
 
         public void readGrid()
         {
-            SqlCommand readCmd = planerConn.CreateCommand();
-            planerConn.Open();
-            readCmd.CommandType = System.Data.CommandType.Text;
-            readCmd.CommandText = "SELECT * from [PlanerTable]";
-            readCmd.ExecuteNonQuery();
-            planerConn.Close();
+            try
+            {
+                SqlCommand readCmd = planerConn.CreateCommand();
+                planerConn.Open();
+                readCmd.CommandType = System.Data.CommandType.Text;
+                readCmd.CommandText = "SELECT * from [PlanerTable]";
+                readCmd.ExecuteNonQuery();
+                planerConn.Close();
 
-            SqlCommand cmdQuery = new SqlCommand(readCmd.CommandText, planerConn);   //hier weiterbasteln
-            SqlDataAdapter gridAdapter = new SqlDataAdapter(cmdQuery);
-            DataSet gridDataSet = new DataSet();
-            gridAdapter.Fill(gridDataSet);
+                SqlCommand cmdQuery = new SqlCommand(readCmd.CommandText, planerConn);
+                SqlDataAdapter gridAdapter = new SqlDataAdapter(cmdQuery);
+                DataSet gridDataSet = new DataSet();
+                gridAdapter.Fill(gridDataSet);
 
-            dataGrid.ItemsSource = gridDataSet.Tables[0].DefaultView;
+                dataGrid.ItemsSource = gridDataSet.Tables[0].DefaultView;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
         }
 
         //write to datagrid
         //write cmd + read dataGrid.Cells + write to table via sql command
         //view auslesen + datagrid cells prüfen (for loop) + werte in sql write-command integrieren und tabelle aktualisieren
-
+        private void update_Click(object sender, RoutedEventArgs e)
+        {
+            readGrid();
+            MessageBox.Show("Grid updated!");
+        }
         public void writeToPlanerTable() //einbinden in button event methode
         {
-            SqlCommand cmd = planerConn.CreateCommand();
+            try
+            {
+                SqlCommand cmd = planerConn.CreateCommand();
 
-            planerConn.Open();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "INSERT INTO [PlanerTable] VALUES ('" + dataGrid.Items + "')";    //wie lese ich hier korrekt die cells ein????
-            cmd.ExecuteNonQuery();
-            planerConn.Close();
+                planerConn.Open();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = "INSERT INTO [PlanerTable] (Uhrzeit, Tätigkeit, Beschreibung, Erledigt) VALUES ('" + uhrzeitBox.Text + "' , '" + tätigkeitBox.Text + "' , '" + beschreibungBox.Text + "' , '" + erledigtBox.Text + "')"; //wie lese ich hier korrekt die cells ein????
+                cmd.ExecuteNonQuery();
+                planerConn.Close();
+
+                uhrzeitBox.Text = "";
+                tätigkeitBox.Text = "";
+                beschreibungBox.Text = "";
+                erledigtBox.Text = "";
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
 
         }
         private void dbInsert_Click(object sender, RoutedEventArgs e)
@@ -99,13 +122,19 @@ namespace WPF_Organizer
 
         private void savefileDirectoryDialog()
         {
-            SaveFileDialog savefileDialog = new SaveFileDialog();
-            savefileDialog.ShowDialog();
-            //savefileDialog.FileName = userDefaultPath;
-            File.WriteAllText(savefileDialog.FileName, readWriteTxtBox.Text);
+            try
+            {
+                SaveFileDialog savefileDialog = new SaveFileDialog();
+                savefileDialog.ShowDialog();
+                File.WriteAllText(savefileDialog.FileName, readWriteTxtBox.Text);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
         }
 
-        private void saveTextButton_Click(object sender, RoutedEventArgs e) 
+        private void saveTextButton_Click(object sender, RoutedEventArgs e)
         {
             savefileDirectoryDialog();
             MessageBox.Show("Text sucessfully saved!");
@@ -119,10 +148,16 @@ namespace WPF_Organizer
 
         private void fileDirectoryDialog()
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.ShowDialog();
-            //fileDialog.FileName = userDefaultPath;
-            readWriteTxtBox.Text = File.ReadAllText(fileDialog.FileName);
+            try
+            {
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.ShowDialog();
+                readWriteTxtBox.Text = File.ReadAllText(fileDialog.FileName);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
         }
 
         private void fileDialog_Click(object sender, RoutedEventArgs e)

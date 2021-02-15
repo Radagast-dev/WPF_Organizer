@@ -74,7 +74,7 @@ namespace WPF_Organizer
 
             dataAdapter.Fill(loginData);
 
-            if (loginData.Rows.Count == 1) //Geht nicht in schleife rein (?)
+            if (loginData.Rows.Count == 1) 
             {
                 MessageBox.Show("Login sucessful!");
 
@@ -143,7 +143,7 @@ namespace WPF_Organizer
             SqlDataAdapter regWriteAdapter = new SqlDataAdapter("INSERT INTO [PasswordTable] (Name,Password) VALUES('" + nametextBox.Text + "' , '" + pwtextBox.Text + "')", conn); //Inkorrekte sql syntax
             DataTable regWriteTable = new DataTable();
 
-            regWriteAdapter.Fill(regWriteTable); //useless?!
+            regWriteAdapter.Fill(regWriteTable);
 
             nametextBox.Text = "";
             pwtextBox.Text = "";
