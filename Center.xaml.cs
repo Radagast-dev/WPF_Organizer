@@ -39,6 +39,7 @@ namespace WPF_Organizer
 
             //Tab I
             readGrid();
+            disableWriteGrid();
 
             //Tab III
             timeFoo();
@@ -65,6 +66,15 @@ namespace WPF_Organizer
             catch (Exception exc)
             {
                 MessageBox.Show(exc.ToString());
+            }
+        }
+
+        public void disableWriteGrid()  //einbauen + testen
+        {
+            if (dataGrid.IsReadOnly == false)
+            {
+                dataGrid.IsReadOnly = true;
+                MessageBox.Show("Zellbearbeitung im Grid deaktiviert!");
             }
         }
 

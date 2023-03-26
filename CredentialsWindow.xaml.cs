@@ -20,6 +20,7 @@ namespace WPF_Organizer
     /// <summary>
     /// Interaction logic for CredentialsWindow.xaml
     /// </summary>
+    /// https://www.dev-insider.de/4-kostenfreie-mockup-tools-a-872594/
     public partial class CredentialsWindow : Window
     {
         public CredentialsWindow()
